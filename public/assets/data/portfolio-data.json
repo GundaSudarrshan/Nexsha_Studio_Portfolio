@@ -1,0 +1,69 @@
+{
+  "studio": {
+    "name": "Nexsha Studio",
+    "tagline": "Crafting High-End Digital Experiences",
+    "mission": "Nexsha Studio is a full-service fit-out company providing turnkey services for commercial and residential interior fit-out projects. With our team of professionals, we deliver projects on time, on budget and with an exceptional level of quality.",
+    "email": "contact@nexsha.studio",
+    "yearsOfExperience": "30+ Years of Designing Dream Spaces",
+    "presentationModes": [
+      {
+        "key": "sketch",
+        "label": "Sketch",
+        "imageUrl": "assets/hero/sketch.svg",
+        "caption": "Early concept and massing"
+      },
+      {
+        "key": "render",
+        "label": "Render",
+        "imageUrl": "assets/hero/render.svg",
+        "caption": "Material and lighting exploration"
+      },
+      {
+        "key": "reality",
+        "label": "Reality",
+        "imageUrl": "assets/hero/reality.svg",
+        "caption": "Built outcome on site"
+      }
+    ]
+  },
+  "socialLinks": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/GundaSudarrshan",
+      "icon": "github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "#",
+      "icon": "linkedin"
+    }
+  ],
+  "founders": [
+    {
+      "name": "Sudarrshan G",
+      "role": "Co-Founder & Technical Lead",
+      "bio": "Expert in building scalable web architectures and leading technical teams toward excellence."
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Portfolio Showcase",
+      "description": "An Angular 19-based high-performance portfolio.",
+      "techStack": ["Angular 19", "SCSS", "Vite"],
+      "category": "Web Development"
+    }
+  ],
+  "services": [
+    {
+      "title": "Web Development",
+      "description": "Building modern, fast, and secure web applications.",
+      "icon": "code"
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "Crafting intuitive and engaging user experiences.",
+      "icon": "palette"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+@use './colors_typ';
+
+.portfolio-container {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 2rem;
+	font-family: var(--font-family-base);
+	color: var(--color-heading);
+	background: var(--color-bg);
+}
+
+.hero-presentation {
+	text-align: center;
+	padding: 2rem 0 3rem;
+	margin-bottom: 3rem;
+	background: var(--color-surface-muted);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+}
+
+.eyebrow {
+	text-transform: uppercase;
+	letter-spacing: var(--letter-wider);
+	font-size: var(--text-xs);
+	color: var(--color-accent-strong);
+	margin: 0;
+}
+
+.portfolio-container h1 {
+	font-size: var(--text-2xl);
+	color: var(--color-heading);
+	margin: 0.8rem auto;
+	max-width: 20ch;
+	text-transform: uppercase;
+	line-height: 1.08;
+	font-family: var(--font-family-display);
+}
+
+.hero-subtitle {
+	font-size: var(--text-lg);
+	color: var(--color-primary-hover);
+	margin: 0 auto 2rem;
+	max-width: 74ch;
+	line-height: 1.55;
+	padding: 0 1rem;
+}
+
+.presentation-frame {
+	margin: 0 auto;
+	width: min(1060px, 100%);
+}
+
+.presentation-frame img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+}
+
+.presentation-frame figcaption {
+	margin-top: 0.75rem;
+	color: var(--color-text-muted);
+	font-size: var(--text-sm);
+}
+
+.placeholder-art {
+	width: min(1060px, 100%);
+	margin: 0 auto;
+	aspect-ratio: 16 / 9;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: linear-gradient(160deg, var(--color-surface), var(--color-surface-muted));
+	display: grid;
+	place-items: center;
+	color: var(--color-text-muted);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: var(--letter-wide);
+}
+
+.mode-toggle {
+	margin: 1.7rem auto 0.7rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1.2rem 2rem;
+}
+
+.mode-toggle button {
+	border: none;
+	background: transparent;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.8rem;
+	color: var(--color-accent-strong);
+	text-transform: uppercase;
+	letter-spacing: var(--letter-hero);
+	cursor: pointer;
+	padding: 0.35rem 0;
+	font-weight: 700;
+	font-size: var(--text-md);
+}
+
+.mode-toggle .dot {
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--color-primary-hover);
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+}
+
+.mode-toggle button.active .dot::after {
+	content: '';
+	position: absolute;
+	inset: 0.17rem;
+	border-radius: 50%;
+	background: var(--color-heading);
+}
+
+.mode-toggle button:focus-visible {
+	outline: 2px solid var(--color-focus);
+	outline-offset: 3px;
+}
+
+.mode-progress {
+	position: relative;
+	width: min(520px, 88%);
+	margin: 0 auto;
+	height: 1.4rem;
+}
+
+.mode-progress .line {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 2px;
+	background: var(--color-divider);
+}
+
+.mode-progress .indicator {
+	position: absolute;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: var(--color-heading);
+	transform: translate(-50%, -50%);
+	transition: left 220ms ease;
+}
+
+.experience {
+	margin: 0.8rem 0 0;
+	color: var(--color-primary-hover);
+	font-weight: 600;
+}
+
+.services,
+.projects,
+.contact {
+	margin-top: 2.8rem;
+}
+
+.portfolio-container h2 {
+	color: var(--color-heading);
+	font-size: 1.8rem;
+	margin-bottom: 0.4rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+.card {
+	padding: 1.5rem;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	border-color: var(--color-accent);
+}
+
+.tech-stack {
+	margin-top: 0.85rem;
+}
+
+.tech-stack span {
+	background: var(--color-accent-soft);
+	color: var(--color-heading);
+	padding: 0.25rem 0.5rem;
+	border-radius: var(--radius-sm);
+	font-size: var(--text-sm);
+	margin-right: 0.5rem;
+	display: inline-block;
+	margin-bottom: 0.4rem;
+}
+
+.contact a {
+	color: var(--color-primary);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.contact a:hover {
+	color: var(--color-primary-hover);
+}
+
+.socials {
+	margin-top: 0.75rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+@media (max-width: 768px) {
+	.portfolio-container {
+		padding: 1rem;
+	}
+
+	.hero-presentation {
+		padding: 1.5rem 0.8rem 2.2rem;
+	}
+
+	.mode-toggle button {
+		letter-spacing: 0.18rem;
+		font-size: 0.88rem;
+	}
+
+	.experience {
+		font-size: 0.92rem;
+	}
+}

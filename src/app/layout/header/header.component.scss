@@ -1,0 +1,288 @@
+// ── Design Tokens ────────────────────────────────────────────────────────
+$header-z:           1000;
+$overlay-z:          1010;
+$bp-mobile:          768px;
+$nav-font-size:      0.8rem;
+$nav-letter-spacing: 0.12em;
+$easing:             cubic-bezier(0.16, 1, 0.3, 1);
+
+// ── Host block ───────────────────────────────────────────────────────────
+:host { display: block; }
+
+// ── Component root ───────────────────────────────────────────────────────
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: $header-z;
+  background: var(--brand-charcoal);
+  border-bottom: 1px solid var(--brand-gold-700);
+  transition: background 0.4s $easing, border-color 0.4s $easing;
+
+  // ── Scrolled state ───────────────────────────────────────────────────
+  &.scrolled {
+    background: rgba(27, 27, 29, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--brand-gold-600);
+
+    .site-header__bar { padding-block: 0.85rem; }
+  }
+
+  // ── Top bar ──────────────────────────────────────────────────────────
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1800px;
+    margin-inline: auto;
+    padding: 1.25rem 5%;
+    transition: padding 0.4s $easing;
+  }
+
+  // ── Logo ─────────────────────────────────────────────────────────────
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 6px;
+    margin-inline-start: -6px;   // optical alignment
+
+    img {
+      display: block;
+      height: 44px;
+      width: auto;
+      transition: transform 0.22s ease;
+      // Keeping this to scale up the logo slightly on hover for a subtle interactive touch, even though the original design doesn't specify it. It adds a bit of polish without being too flashy.
+      //TODO: we need to get SVG logo for proper scaling and crispness, but this is a nice stopgap.
+      transform: scale(2.6);
+      transform-origin: left center;
+
+
+      @media (max-width: $bp-mobile) { height: 36px; }
+    }
+
+    &:hover img { transform: scale(1.05); }
+  }
+
+  // ── Desktop nav ──────────────────────────────────────────────────────
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 2.75rem;
+
+    a {
+      font-size: $nav-font-size;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: $nav-letter-spacing;
+      color: var(--neutral-300);
+      text-decoration: none;
+      transition: color 0.25s ease;
+
+      &:hover,
+      &.is-active { color: var(--brand-gold-500); }
+    }
+
+    @media (max-width: $bp-mobile) { display: none; }
+  }
+
+  // ── Desktop actions bar ──────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (max-width: $bp-mobile) { display: none; }
+  }
+
+  // Social link chip (desktop)
+  &__social {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--neutral-500);
+    text-decoration: none;
+    transition: color 0.25s ease;
+
+    &:hover { color: var(--brand-gold-500); }
+  }
+
+  // Connect CTA button
+  &__connect {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 1.2rem;
+    border: 1px solid var(--brand-gold-700);
+    color: var(--brand-gold-400);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+
+    &:hover {
+      background: var(--brand-gold-600);
+      border-color: var(--brand-gold-600);
+      color: var(--brand-charcoal);
+    }
+  }
+
+  // ── Hamburger button ─────────────────────────────────────────────────
+  &__hamburger {
+    display: none;                 // visible only on mobile
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    span {
+      display: block;
+      height: 2px;
+      background: var(--neutral-200);
+      transform-origin: center;
+      transition: transform 0.32s $easing, opacity 0.22s ease, width 0.25s ease;
+
+      &:nth-child(1) { width: 24px; }
+      &:nth-child(2) { width: 16px; }  // shorter middle — style detail
+      &:nth-child(3) { width: 24px; }
+    }
+
+    // Animate to ✕ when open
+    &.is-open {
+      span:nth-child(1) { transform: translateY(9px) rotate(45deg);   width: 24px; }
+      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); width: 24px; }
+    }
+
+    @media (max-width: $bp-mobile) { display: flex; }
+  }
+
+  // ── Mobile full-screen overlay ───────────────────────────────────────
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: $overlay-z;
+    background: var(--brand-charcoal);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    overflow-y: auto;
+
+    &.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    // Close button inside overlay (top-right) — dark circular background with gold X
+    .site-header__overlay-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: $overlay-z + 10;
+      transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      -webkit-appearance: none;
+      appearance: none;
+
+      // accessible focus ring
+      &:hover {
+        outline: none;
+        box-shadow: 0 0 0 6px rgba(199,152,44,0.12);
+      }
+
+      // use inline SVG icon
+      svg {
+        display: block;
+        width: 32px;
+        height: 32px;
+      }
+
+      &:hover {
+        background: rgba(199,152,44,0.06);
+        border-color: rgba(199,152,44,0.18);
+      }
+    }
+  }
+
+  // ── Mobile nav inside overlay ────────────────────────────────────────
+  &__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 7rem 2rem 3rem;   // top gap clears the fixed header bar
+
+    a {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--neutral-200);
+      text-decoration: none;
+      padding-block: 0.7rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: color 0.2s ease, padding-left 0.2s ease;
+
+      &:hover,
+      &.is-active {
+        color: var(--brand-gold-500);
+        padding-left: 0.5rem;
+      }
+    }
+
+    // Connect CTA inside overlay
+    .mobile-connect {
+      margin-block-start: 2rem;
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 0.75rem 2.25rem;
+      border: 1px solid var(--brand-gold-700);
+      border-bottom: 1px solid var(--brand-gold-700); // override nav a rule
+      color: var(--brand-gold-400);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: background 0.25s ease, color 0.25s ease;
+
+      &:hover {
+        background: var(--brand-gold-600);
+        color: var(--brand-charcoal);
+        padding-left: 2.25rem;   // reset nav a hover
+      }
+    }
+
+    // Social links row
+    .mobile-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-block-start: auto;
+      padding-block-start: 2.5rem;
+
+      a {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--neutral-500);
+        padding: 0;
+        border-bottom: none;
+
+        &:hover { color: var(--brand-gold-500); padding-left: 0; }
+      }
+    }
+  }
+}

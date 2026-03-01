@@ -1,0 +1,19 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="real-sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#c6ddf5"/>
+      <stop offset="100%" stop-color="#f7f9fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#real-sky)"/>
+  <rect y="610" width="1600" height="290" fill="#b7bda9"/>
+  <polygon points="200,610 430,440 680,520 845,395 1050,500 1275,390 1510,610" fill="#4f4f4f"/>
+  <rect x="380" y="525" width="250" height="185" fill="#e8e5df"/>
+  <rect x="750" y="500" width="300" height="210" fill="#ece9e2"/>
+  <rect x="1110" y="520" width="230" height="190" fill="#e6e2da"/>
+  <rect x="465" y="560" width="85" height="150" fill="#2e3745"/>
+  <rect x="855" y="550" width="90" height="160" fill="#2e3745"/>
+  <rect x="1175" y="560" width="90" height="150" fill="#2e3745"/>
+  <circle cx="1260" cy="190" r="56" fill="#f8dfa0" opacity="0.8"/>
+  <text x="800" y="835" text-anchor="middle" fill="#1f3559" font-family="Arial, sans-serif" font-size="34" letter-spacing="8">REALITY</text>
+</svg>

@@ -1,0 +1,126 @@
+.presentation-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.presentation-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(15, 15, 16, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.placeholder-art {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--neutral-100), var(--neutral-200));
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--color-accent);
+      color: var(--color-text);
+    }
+
+    &.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: white;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.6;
+    }
+  }
+}
+
+.mode-progress {
+  position: relative;
+  height: 2px;
+  background: var(--neutral-300);
+  border-radius: 1px;
+  overflow: hidden;
+
+  .line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .indicator {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: var(--color-accent);
+    transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@media (max-width: 768px) {
+  .mode-toggle {
+    gap: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: var(--text-xs);
+    }
+  }
+}

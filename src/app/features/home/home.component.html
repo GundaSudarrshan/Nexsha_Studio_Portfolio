@@ -1,0 +1,49 @@
+<main class="portfolio-container" *ngIf="portfolio.studio() as studio">
+  <header class="hero-presentation">
+    <p class="eyebrow">{{ studio.name }}</p>
+    <h1>The Perfect Space Designed Just for You</h1>
+    <p class="hero-subtitle">
+      {{ studio.tagline }}. {{ studio.mission }}
+    </p>
+
+    <app-presentation-toggle
+      [modes]="presentationModes()"
+      [selectedKey]="selectedMode()"
+      (selectedKeyChange)="selectMode($event)"
+    />
+
+    <p class="experience">{{ studio.yearsOfExperience || '30+ Years of Designing Dream Spaces' }}</p>
+  </header>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="grid">
+      <div class="card" *ngFor="let s of portfolio.services()">
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>Featured Projects</h2>
+    <div class="grid">
+      <div class="card" *ngFor="let p of portfolio.projects()">
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.description }}</p>
+        <div class="tech-stack">
+          <span *ngFor="let tech of p.techStack">{{ tech }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact">
+    <p>Get in touch: <a [href]="'mailto:' + studio.email">{{ studio.email }}</a></p>
+    <div class="socials">
+      <a *ngFor="let link of portfolio.socialLinks()" [href]="link.url" target="_blank">
+        {{ link.platform }}
+      </a>
+    </div>
+  </footer>
+</main>

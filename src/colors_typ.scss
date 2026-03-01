@@ -1,0 +1,73 @@
+/*
+  Nexsha Design Tokens
+  Source mood from brand assets:
+  - logo: warm metallic gold family
+  - visiting cards: deep black + rich gold accents
+
+  Add future inspirations in this file using semantic tokens only.
+*/
+
+:root {
+  /* Core brand scale */
+  --brand-black: #0f0f10;
+  --brand-charcoal: #1b1b1d;
+  --brand-gold-700: #b68203;
+  --brand-gold-600: #c0900e;
+  --brand-gold-500: #c7982c;
+  --brand-gold-400: #debc70;
+
+  /* Neutrals */
+  --neutral-1000: #0a0a0b;
+  --neutral-900: #121316;
+  --neutral-800: #1f232b;
+  --neutral-700: #313947;
+  --neutral-600: #536072;
+  --neutral-500: #7a8799;
+  --neutral-300: #cfd6df;
+  --neutral-200: #e6ebf1;
+  --neutral-100: #f3f5f8;
+  --neutral-50: #fafbfd;
+
+  /* Semantic color tokens */
+  --color-bg: var(--neutral-50);
+  --color-surface: #ffffff;
+  --color-surface-muted: var(--neutral-100);
+  --color-text: var(--neutral-800);
+  --color-text-muted: var(--neutral-600);
+  --color-heading: #1f3559;
+  --color-border: var(--neutral-300);
+  --color-divider: #d9b287;
+
+  --color-primary: #1f3559;
+  --color-primary-hover: #2f4a75;
+  --color-accent: var(--brand-gold-500);
+  --color-accent-strong: var(--brand-gold-600);
+  --color-accent-soft: #f4e2b9;
+  --color-focus: #2f5fa3;
+
+  /* Status */
+  --color-success: #237b50;
+  --color-warning: #ac7c1f;
+  --color-danger: #b03a3a;
+
+  /* Typography tokens */
+  --font-family-base: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Oswald', 'Bebas Neue', Inter, sans-serif;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: clamp(32px, 5vw, 64px);
+
+  --letter-wide: 3px;
+  --letter-wider: 4px;
+  --letter-hero: 5px;
+
+  /* Radius / elevation */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 10px 28px rgba(10, 16, 32, 0.08);
+}

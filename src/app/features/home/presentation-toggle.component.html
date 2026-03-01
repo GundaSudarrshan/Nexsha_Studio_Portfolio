@@ -1,0 +1,35 @@
+<section class="presentation-toggle">
+  <figure class="presentation-frame">
+    <img
+      *ngIf="activeMode?.imageUrl; else placeholder"
+      [src]="activeMode?.imageUrl"
+      [alt]="(activeMode?.label || 'Presentation') + ' preview'"
+    />
+    <figcaption>{{ activeMode?.caption || 'Design visual' }}</figcaption>
+  </figure>
+
+  <ng-template #placeholder>
+    <div class="placeholder-art">
+      <span>{{ activeMode?.label || 'Sketch' }} preview</span>
+    </div>
+  </ng-template>
+
+  <div class="mode-toggle" role="radiogroup" aria-label="Presentation mode">
+    <button
+      *ngFor="let mode of modes"
+      type="button"
+      [class.active]="mode.key === activeMode?.key"
+      [attr.aria-checked]="mode.key === activeMode?.key"
+      role="radio"
+      (click)="selectMode(mode.key)"
+    >
+      <span class="dot"></span>
+      <span class="label">{{ mode.label }}</span>
+    </button>
+  </div>
+
+  <div class="mode-progress" aria-hidden="true">
+    <span class="line"></span>
+    <span class="indicator" [style.left.%]="indicatorLeft()"></span>
+  </div>
+</section>
